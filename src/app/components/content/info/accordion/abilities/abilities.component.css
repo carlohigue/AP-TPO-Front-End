@@ -1,0 +1,136 @@
+
+.bg-abilities{
+    background-color: rgba(204, 203, 203, 0.945);
+}
+
+.bg-sky{
+    background-color:  #709fe2;
+}
+
+.bg-grey{
+    background-color:  #313131;
+    color: rgb(242, 243, 245);
+}
+
+.bg-green{
+    background-color: rgb(24, 185, 38);
+}
+
+.bg-purple{
+    background-color: rgb(142, 56, 163);
+}
+
+.bg-pink{
+    background-color: rgb(230, 75, 152);
+}
+
+.bg-redbrown{
+    background-color: #420e15;
+}
+
+.bg-brown{
+    background-color: #b97c0a;
+}
+
+.bg-orange{
+    background-color: #e74218;
+}
+
+.java{
+    fill: rgb(62, 122, 212);
+}
+
+.spring{
+    fill: rgb(44, 221, 38);
+}
+
+.js{
+    fill: rgb(255, 252, 61);
+}
+
+.angular{
+    fill: #dd0122;
+}
+
+.nodejs{
+    fill: rgb(0, 151, 0);
+}
+
+.python{
+    fill: #11152b;
+}
+
+.html{
+    fill: rgb(223, 45, 1);
+}
+
+.css{
+    fill: rgb(77, 77, 235);
+}
+
+.ruby{
+    fill: #b9021e;
+}
+
+.poo{
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 70px;
+    font-weight:bolder;
+    user-select: none;
+}
+
+.mysql{
+    fill: rgb(151, 151, 151);
+}
+
+.hys{
+    fill: #11152b;
+}
+
+.windows{
+    fill: #1052b6;
+}
+
+.scrum{
+    fill: #8d3fc2;
+}
+
+.idioma{
+    fill: rgb(124, 181, 219);
+}
+
+.word{
+    fill: rgb(50, 52, 145);
+}
+
+.excel{
+    fill: rgb(34, 145, 34);
+}
+
+.asistencia{
+    fill: rgb(81, 196, 196);
+}
+
+.cambios{
+    fill: aliceblue;
+}
+
+.aprendizaje{
+    fill: #420e15 ;
+}
+
+.equipo{
+    fill: rgb(105, 1, 91);
+}
+
+.comunicacion{
+    fill: rgb(245, 124, 165);
+}
+
+.resolucion{
+    fill: rgb(31, 112, 31);
+}
+
+.gestion{
+    fill: rgb(141, 84, 9);
+}

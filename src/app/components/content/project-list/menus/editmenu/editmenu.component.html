@@ -1,0 +1,56 @@
+<div class="row" id="hiddenEditMenu" class="hide">
+    <div class="border-top">
+      <button
+        class="btn btn-outline-secondary col-3 mb-2 position-relative top-50 start-50 translate-middle my-5 m-button"
+        type="submit"
+        (click)="hideEditMenu()"
+      >
+        Stop Editing
+      </button>
+      <div class="row mx-auto">
+        <input
+          type="text"
+          placeholder="Title"
+          id="Title"
+          name="Title"
+          class="m-2 col mx-3"
+          [(ngModel)]="metaProject.title"
+        />
+
+        <input
+          type="text"
+          placeholder="Technologies"
+          id="Technologies"
+          name="Technologies"
+          class="m-2 col mx-3"
+          [(ngModel)]="metaProject.tech"
+        />
+      </div>
+      <div class="row mx-auto">
+        <input
+          type="text"
+          placeholder="Link"
+          id="Link"
+          name="Link"
+          class="m-2 col mx-3"
+          [(ngModel)]="metaProject.link"
+        />
+      </div>
+      <div class="row">
+        <button
+          class="btn btn-secondary my-3 mx-auto col-3 m-button"
+          type="submit"
+          (click)="editProject(metaProject.id)"
+        >
+          Apply Edit
+        </button>
+        <button
+          class="btn btn-outline-info my-3 mx-auto col-3 m-button"
+          type="submit"
+          (click)="blankForm()"
+        >
+          Clear
+        </button>
+      </div>
+    </div>
+  </div>
