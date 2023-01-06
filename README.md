@@ -1,27 +1,39 @@
-# PortafolioFront
+This is the **Front-End repository** of my Web App, which will display project information from a database to a client, and allow them to edit it through the Backend. SQL file is included with information on the database to create.
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.0.4.
+**Back-End Repository** can be found as `«AP-TPO-Back-End»` on this profile.
 
-## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+***
 
-## Code scaffolding
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+**Technologies used**: Java `Spring Boot` with Initilizr, Javascript `Angular`, `MySQL`.
 
-## Build
+This is part of _Argentina Programa_ final Project that includes the following topics, used to do this project:
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Architechture of services:
 
-## Running unit tests
+• Digital skills for programmers. <br>
+• Web architecture.<br>
+• Distributed WEB architecture (Frontend and Backend).<br>
+• HTTP protocol request process (GET, POST, PUT).<br>
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Web Development Front-End:
 
-## Running end-to-end tests
+• HTML, CSS, Javascript, and TypeScript programming concepts, variables, and data types.<br>
+• Bootstrap from scratch.<br>
+• Typescript programming concepts, operators, methods, and variables. Digital skills for programmers.<br>
+• Angular from scratch.<br>
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+## Web Development Back-end:
 
-## Further help
+• MySQL, Databases, and JSON.<br>
+• Object Oriented Programming OOP, UML, and Good Practices.<br>
+• Java programming concepts.<br>
+• Java Web programming concepts.<br>
+• Spring Boot Framework.<br>
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+## Project and work management:
+
+• SCRUM.<br>
+• Git and Github.<br>
+• DevOps.<br>
