@@ -1,29 +1,33 @@
 <div class="row" id="hiddenAddMenu" class="hide">
-    <div class="border-top">
-      <button
-        class="btn btn-outline-primary col-3 mb-2 position-relative top-50 start-50 translate-middle my-5 m-button"
-        type="submit"
-        (click)="hideAddMenu()"
-      >
-        Stop Adding
-      </button>
+  <div class="border-top">
+    <button
+      class="btn btn-outline-primary col-3 mb-2 position-relative top-50 start-50 translate-middle my-5 m-button"
+      type="submit"
+      (click)="hideAddMenu()"
+    >
+      Stop Adding
+    </button>
+
+    <form (ngSubmit)="addProject(form)" #form="ngForm" novalidate>
       <div class="row mx-auto">
         <input
           type="text"
           placeholder="Title"
           id="Title"
-          name="Title"
+          name="title"
           class="m-2 col mx-3"
-          [(ngModel)]="metaProject.title"
+          [(ngModel)]="project.title"
+          required
         />
 
         <input
           type="text"
           placeholder="Technologies"
           id="Technologies"
-          name="Technologies"
+          name="tech"
           class="m-2 col mx-3"
-          [(ngModel)]="metaProject.tech"
+          [(ngModel)]="project.tech"
+          required
         />
       </div>
       <div class="row mx-auto">
@@ -31,16 +35,15 @@
           type="text"
           placeholder="Link"
           id="Link"
-          name="Link"
+          name="link"
           class="m-2 col mx-3"
-          [(ngModel)]="metaProject.link"
+          [(ngModel)]="project.link"
+          required="true"
         />
       </div>
       <div class="row">
         <button
           class="btn btn-primary my-3 mx-auto col-3 m-button"
-          type="submit"
-          (click)="addProject()"
         >
           Apply Add
         </button>
@@ -52,5 +55,8 @@
           Clear
         </button>
       </div>
-    </div>
+
+    </form>
+
   </div>
+</div>

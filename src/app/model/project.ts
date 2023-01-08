@@ -4,3 +4,9 @@ export class Project {
     tech!: String;
     link!: String;
 }
+export interface IProject{
+  id?:number
+  link:string;
+  title:string;
+  tech:string
+}
