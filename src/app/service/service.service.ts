@@ -8,7 +8,8 @@ import { Project } from '../model/project';
 })
 export class ProjectService {
 
-  url='http://localhost:8080/api/project'
+    url='https://api-myprojects-carlohigue.koyeb.app/api/project'
+
   constructor(private http: HttpClient) { }
 
   allProjects(): Observable<any>{
