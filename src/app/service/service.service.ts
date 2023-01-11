@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { Project } from '../model/project';
 
@@ -24,7 +25,7 @@ export class ProjectService {
     return this.http.post(this.url, project);
   }
 
-  editProject(id: String, project: Project): Observable<any>{
+  editProject(id: Number, project: Project): Observable<any>{
     return this.http.put(this.url+'/'+id, project);
   }
 

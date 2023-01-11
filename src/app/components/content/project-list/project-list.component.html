@@ -1,43 +1,199 @@
-<div class="card-body">
-  <div id="projects-table" class="not-hide">
-    <table class="table table-hover table-bordered">
-      <thead>
-        <tr>
-          <th scope="col">ID</th>
-          <th scope="col">TITLE</th>
-          <th scope="col">TECH</th>
-          <th scope="col">LINK</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr
-          *ngFor="let p of gatheredProjects"
-          (click)="openInForm(p)"
-          [class.table-active]="metaProject == p"
-        >
-          <th scope="row">{{ p.id }}</th>
-          <td>{{ p.title }}</td>
-          <td>{{ p.tech }}</td>
-          <td><a href="https://{{ p.link }}">•••</a></td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-  <div class="row mb-4 mt-4">
+<div class="card m-3 p-3">
+  <!-- Button trigger -ModalADD -->
+  <div class="row mx-auto my-2">
     <button
-      class="btn btn-dark col-4 mx-auto"
-      type="submit"
-      (click)="showMainMenu()"
+      type="button"
+      class="btn btn-primary col  my-2 text-nowrap"
+      data-bs-toggle="modal"
+      data-bs-target="#staticBackdrop"
     >
-      Show Menu
+      Add Project
     </button>
-    <button
-      class="btn btn-danger col-4 mx-auto"
-      type="submit"
-      (click)="deleteProject()"
-    >
-      Delete a project
-    </button>
-    <app-menus></app-menus>
+    <a href="#edit" class="my-2 col">
+      <button class="btn btn-secondary text-nowrap">Edit Project</button>
+    </a>
   </div>
+
+  <!--LISTPROJECTS-->
+  <table class="table table-hover table-bordered">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">TITLE</th>
+        <th scope="col">TECH</th>
+        <th scope="col">LINK</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr
+        *ngFor="let project of gatheredProjects"
+        (click)="openInForm(project)"
+        [class.table-active]="editFormModel == project"
+      >
+        <th scope="row">{{ project.id }}</th>
+        <td>{{ project.title }}</td>
+        <td>{{ project.tech }}</td>
+        <td class="text-center">
+          <a href="https://{{ project.link }}">•••</a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <!--LISTPROJECTS-->
+
+  <!-- ModalADD -->
+  <div
+    class="modal fade"
+    id="staticBackdrop"
+    data-bs-backdrop="static"
+    data-bs-keyboard="false"
+    tabindex="-1"
+    aria-labelledby="staticBackdropLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Add a Project</h1>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="modal-body">
+          <!--ADDFORM-->
+          <form #addForm="ngForm" (ngSubmit)="addProject(addForm)">
+            <div class="row mx-auto">
+              <input
+                class="m-2 col mx-3"
+                type="text"
+                placeholder="Add project Title"
+                [(ngModel)]="addFormModel.title"
+                name="title"
+                required
+                #title="ngModel"
+              />
+
+              <input
+                class="m-2 col mx-3"
+                type="text"
+                placeholder="Add project Technology"
+                [(ngModel)]="addFormModel.tech"
+                name="tech"
+                #tech="ngModel"
+              />
+            </div>
+            <div class="row mx-auto">
+              <input
+                class="m-2 col mx-3"
+                type="url"
+                placeholder="Add project Link"
+                [(ngModel)]="addFormModel.link"
+                name="link"
+                required
+                #link="ngModel"
+              />
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-bs-dismiss="modal"
+              >
+                Close
+              </button>
+              <button
+                type="submit"
+                class="btn btn-primary"
+                [disabled]="title.invalid || tech.invalid || link.invalid"
+              >
+                Apply
+              </button>
+            </div>
+          </form>
+          <!--ADDFORM-->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--EDITFORM-->
+  <form #editForm="ngForm" id="edit" (ngSubmit)="editProject(editForm)">
+    <div
+      [hidden]="editForm.value.id !== ''"
+      class="h5 my-3 mx-auto text-center"
+    >
+      Select from the list to edit.
+    </div>
+    <div class="card" [hidden]="editForm.value.id == ''">
+      <div class="row me-auto ms-3 my-2 text-nowrap">
+        <label class="form-label col-2 h6">ID</label>
+        <input
+        class="col-3 border border-secondary rounded-5 border-opacity-50"
+        type="text"
+        placeholder="ID"
+        [(ngModel)]="editFormModel.id"
+        name="id"
+        #editId="ngModel"
+        readonly
+      />
+      </div>
+      <div class="row mx-auto">
+        <div class="col my-2">
+          <label class="form-label">Title</label> <br>
+          <input
+            type="text"
+            placeholder="Title of project"
+            [(ngModel)]="editFormModel.title"
+            name="title"
+            #editTitle="ngModel"
+          />
+        </div>
+        <div class="col my-2">
+          <label class="form-label">Technologies</label> <br>
+          <input
+            type="text"
+            placeholder="Technologies used"
+            [(ngModel)]="editFormModel.tech"
+            name="tech"
+            #editTech="ngModel"
+          />
+        </div>
+      </div>
+      <div class="row mx-auto">
+        <label class="form-label">Link</label> <br>
+        <input
+          type="url"
+          placeholder="Link to the Project"
+          [(ngModel)]="editFormModel.link"
+          name="link"
+          required
+          #editLink="ngModel"
+        />
+      </div>
+      <button
+        class="btn btn-secondary mt-4"
+        type="submit"
+        [disabled]="editTitle.invalid || editTech.invalid || editLink.invalid"
+      >
+        Apply Edition
+      </button>
+    </div>
+  </form>
+
+  <!--EDITFORM-->
+
+  <!--DELETE-->
+  <form #addForm="ngForm">
+    <div class="text-danger my-5">
+      DANGER ZONE: Careful with the actions made in the following, they can't be
+      undone.
+    </div>
+    <button class="btn btn-danger" (click)="deleteProject()">
+      DELETE A PROJECT
+    </button>
+  </form>
 </div>
+<!--DELETE-->

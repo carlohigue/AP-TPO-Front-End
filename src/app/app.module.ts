@@ -15,9 +15,6 @@ import { WhoiamComponent } from './components/content/info/accordion/whoiam/whoi
 import { ExperienceComponent } from './components/content/info/accordion/experience/experience.component';
 import { StudiesComponent } from './components/content/info/accordion/studies/studies.component';
 import { AbilitiesComponent } from './components/content/info/accordion/abilities/abilities.component';
-import { MenusComponent } from './components/content/project-list/menus/menus.component';
-import { EditmenuComponent } from './components/content/project-list/menus/editmenu/editmenu.component';
-import { AddmenuComponent } from './components/content/project-list/menus/addmenu/addmenu.component';
 
 
 @NgModule({
@@ -32,10 +29,7 @@ import { AddmenuComponent } from './components/content/project-list/menus/addmen
     WhoiamComponent,
     ExperienceComponent,
     StudiesComponent,
-    AbilitiesComponent,
-    MenusComponent,
-    AddmenuComponent,
-    EditmenuComponent
+    AbilitiesComponent
   ],
   imports: [
     BrowserModule,
