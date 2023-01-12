@@ -45,7 +45,7 @@ For each part we have:
 | **Total**     | **32 Days** |
 
 
-The time dedicated for this project is planned to be attended **from 4 to 6 hours each day**, mainly taking the weekdays, from* Monday to Friday*, without exception of using *Weekends* if required.
+The time dedicated for this project is planned to be attended **from 4 to 6 hours each day**, mainly taking the weekdays, from *Monday to Friday*, without exception of using *Weekends* if required.
 
 <br>
 
