@@ -31,7 +31,7 @@ Author: Carlos Higuerey
 # Time and Work Management
 All the work stated in here is created for a first timer on the creation of a web app. During this time I will be learning how to use and implement correctly all the technologies, analysis and design interfaces, models and architechture and software requiered for this web application.
 
-##Estimations and Sections
+## Estimations and Sections
 For each part we have:
 
 | Subject       | Time        | Technologies                                                         |
