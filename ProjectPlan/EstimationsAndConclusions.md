@@ -82,11 +82,11 @@ Also we will have functions that will get all projects, a single project, add a 
 - `DELETE` deleteProject(*id*)- To erase an entry from our database following *id*.
 <br>
 
-##Front-End
+## Front-End
 It´s required to create a preview of our webpage style, as well as add information relevant to make it a Portfolio that displays our own information as well as our projects stored, making possible to use our Add, Get, Edit and Delete function using forms or menus when needed.
 
 
-#Action Taken per Section
+# Action Taken per Section
 
 ## Planning
 
