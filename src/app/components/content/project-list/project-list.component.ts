@@ -40,7 +40,7 @@ export class ProjectListComponent {
       next: (res) => (this.gatheredProjects = res),
       error: () =>
         window.alert(
-          `There was an problem with LIST, please check your check you internet conection or contact the developer.`
+          `There was an problem with LIST, please check your check you internet conection, reaload this page or contact the developer.`
         ),
     });
   }
@@ -50,7 +50,7 @@ export class ProjectListComponent {
       next: () => window.alert(`Addition was successful!`),
       complete: () => this.ngOnInit(),
       error: () =>
-        window.alert(`There was an problem with ADD, please check your check you internet conection or contact the developer.`
+        window.alert(`There was an problem with ADD, please check your check you internet conection, reaload this page or contact the developer.`
         ),
     });
     this.listProjects();
@@ -60,7 +60,7 @@ export class ProjectListComponent {
     this.projectService.getProject(project.id).subscribe({
       next: (res) => (this.editFormModel = res),
       error: () =>
-        window.alert(`There was an problem with GET, please check your check you internet conection or contact the developer.`
+        window.alert(`There was an problem with GET, please check your check you internet conection, reaload this page, reaload this page or contact the developer.`
         ),
     });
   }
