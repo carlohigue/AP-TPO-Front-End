@@ -1,9 +1,15 @@
 <div class="card m-3 p-3">
-  <!-- Button trigger -ModalADD -->
+  <div [hidden]="gatheredProjects != ''">
+    <code>
+      Retrieving the information from our Database...
+    </code>
+  </div>
+  <div [hidden]="gatheredProjects == ''">
+    <!-- Button trigger -ModalADD -->
   <div class="row mx-auto my-2">
     <button
       type="button"
-      class="btn btn-primary col  my-2 text-nowrap"
+      class="btn btn-primary col my-2 text-nowrap"
       data-bs-toggle="modal"
       data-bs-target="#staticBackdrop"
     >
@@ -15,7 +21,10 @@
   </div>
 
   <!--LISTPROJECTS-->
-  <table class="table table-hover table-bordered">
+  <table
+    class="table table-hover table-bordered"
+
+  >
     <thead>
       <tr>
         <th scope="col">ID</th>
@@ -39,6 +48,7 @@
       </tr>
     </tbody>
   </table>
+
   <!--LISTPROJECTS-->
 
   <!-- ModalADD -->
@@ -131,18 +141,18 @@
       <div class="row me-auto ms-3 my-2 text-nowrap">
         <label class="form-label col-2 h6">ID</label>
         <input
-        class="col-3 border border-secondary rounded-5 border-opacity-50"
-        type="text"
-        placeholder="ID"
-        [(ngModel)]="editFormModel.id"
-        name="id"
-        #editId="ngModel"
-        readonly
-      />
+          class="col-3 border border-secondary rounded-5 border-opacity-50"
+          type="text"
+          placeholder="ID"
+          [(ngModel)]="editFormModel.id"
+          name="id"
+          #editId="ngModel"
+          readonly
+        />
       </div>
       <div class="row mx-auto">
         <div class="col my-2">
-          <label class="form-label">Title</label> <br>
+          <label class="form-label">Title</label> <br />
           <input
             type="text"
             placeholder="Title of project"
@@ -152,7 +162,7 @@
           />
         </div>
         <div class="col my-2">
-          <label class="form-label">Technologies</label> <br>
+          <label class="form-label">Technologies</label> <br />
           <input
             type="text"
             placeholder="Technologies used"
@@ -163,7 +173,7 @@
         </div>
       </div>
       <div class="row mx-auto">
-        <label class="form-label">Link</label> <br>
+        <label class="form-label">Link</label> <br />
         <input
           type="url"
           placeholder="Link to the Project"
@@ -195,5 +205,6 @@
       DELETE A PROJECT
     </button>
   </form>
+  </div>
 </div>
 <!--DELETE-->

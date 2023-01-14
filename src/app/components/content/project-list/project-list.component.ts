@@ -36,23 +36,33 @@ export class ProjectListComponent {
   }
 
   listProjects() {
-    this.projectService
-      .allProjects()
-      .subscribe((res) => (this.gatheredProjects = res));
+    this.projectService.allProjects().subscribe({
+      next: (res) => (this.gatheredProjects = res),
+      error: () =>
+        window.alert(
+          `There was an problem with LIST, please check your check you internet conection or contact the developer.`
+        ),
+    });
   }
 
   addProject(addForm: NgForm) {
     this.projectService.addProject(addForm.value).subscribe({
       next: () => window.alert(`Addition was successful!`),
-      complete: () => this.ngOnInit()
+      complete: () => this.ngOnInit(),
+      error: () =>
+        window.alert(`There was an problem with ADD, please check your check you internet conection or contact the developer.`
+        ),
     });
     this.listProjects();
   }
 
   openInForm(project: any) {
-    this.projectService
-      .getProject(project.id)
-      .subscribe((res) => (this.editFormModel = res));
+    this.projectService.getProject(project.id).subscribe({
+      next: (res) => (this.editFormModel = res),
+      error: () =>
+        window.alert(`There was an problem with GET, please check your check you internet conection or contact the developer.`
+        ),
+    });
   }
 
   editProject(editForm: NgForm) {
@@ -62,9 +72,13 @@ export class ProjectListComponent {
       tech: editForm.value.tech,
       link: editForm.value.link,
     };
-    this.projectService.editProject(pEdit.id, pEdit).subscribe(() => this.ngOnInit());
+    this.projectService
+      .editProject(pEdit.id, pEdit)
+      .subscribe({
+        error: () => window.alert(`There was an problem with EDIT, please check your conection or contact the developer`),
+        next: () => this.ngOnInit()
+      });
   }
-
 
   deleteProject() {
     let deleteId: any = prompt('Input the project ID to delete:');
@@ -74,14 +88,16 @@ export class ProjectListComponent {
 
     for (let gp of this.gatheredProjects) {
       if (deleteId == gp.id) {
-        if (
-          confirm(
-            `You are going to delete the project with ID « ${deleteId} ». Press OK to proceed.`
-          )
-        ) {
+        if (confirm(`You are going to delete the project with ID «${deleteId}». This is permanent. Press OK to proceed.`)){
           failed = false;
-          window.alert('Deletion was submitted.');
-          this.projectService.deleteProject(deleteId).subscribe(() => this.ngOnInit());
+
+          this.projectService
+            .deleteProject(deleteId)
+            .subscribe({
+              next:()=> window.alert('Deletion was submitted.'),
+              error: () => window.alert("There was an problem with DELETE, please check your conection or contact the developer."),
+              complete: () => this.listProjects()
+            });
         }
       }
     }
