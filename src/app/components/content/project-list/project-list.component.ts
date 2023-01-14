@@ -84,6 +84,10 @@ export class ProjectListComponent {
     let deleteId: any = prompt('Input the project ID to delete:');
     deleteId = parseInt(deleteId);
 
+    if(deleteId == 1 || deleteId == 2 ){
+      return window.alert('You are not allowed to delete this project');
+    }
+
     let failed: boolean = true;
 
     for (let gp of this.gatheredProjects) {
@@ -105,4 +109,18 @@ export class ProjectListComponent {
       window.alert('No project was found using that ID.');
     }
   }
+
+  hideDangerMenu(){
+    let dm = document.getElementById('dangerMenu');
+
+    dm!.className = 'cover';
+  }
+
+  showDangerMenu(){
+    let dm = document.getElementById('dangerMenu');
+
+    dm!.className = '';
+  }
 }
+
+
