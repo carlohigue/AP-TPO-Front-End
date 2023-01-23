@@ -32,4 +32,5 @@ export class ProjectService {
   deleteProject(id: Number): Observable<any>{
     return this.http.delete(this.url+'/'+id)
   }
+
 }

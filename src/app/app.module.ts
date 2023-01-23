@@ -8,6 +8,7 @@ import { ContentComponent } from './components/content/content.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { InfoComponent } from './components/content/info/info.component';
 import { ProjectListComponent } from './components/content/project-list/project-list.component';
 import { AccordionComponent } from './components/content/info/accordion/accordion.component';
@@ -35,7 +36,8 @@ import { AbilitiesComponent } from './components/content/info/accordion/abilitie
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

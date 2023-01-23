@@ -1,6 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { Router } from '@angular/router';
 import { Project } from 'src/app/model/project';
 import { ProjectService } from 'src/app/service/service.service';
 
@@ -10,6 +9,20 @@ import { ProjectService } from 'src/app/service/service.service';
   styleUrls: ['./project-list.component.css'],
 })
 export class ProjectListComponent {
+
+
+  LOGTRACK = {
+   user: '',
+   role: ''
+  };
+
+  gatheredProjects: any = [];
+
+  metaProject: Project = new Project();
+  addForm: any;
+  editForm: any;
+  editId: any;
+
   addFormModel = {
     title: '',
     tech: '',
@@ -23,16 +36,11 @@ export class ProjectListComponent {
     link: '',
   };
 
-  gatheredProjects: any = [];
-  metaProject: Project = new Project();
-  addForm: any;
-  editForm: any;
-  editId: any;
-
-  constructor(private projectService: ProjectService, private router: Router) {}
+  constructor(private projectService: ProjectService) {}
 
   ngOnInit(): void {
     this.listProjects();
+    this.loginTracker()
   }
 
   listProjects() {
@@ -50,7 +58,8 @@ export class ProjectListComponent {
       next: () => window.alert(`Addition was successful!`),
       complete: () => this.ngOnInit(),
       error: () =>
-        window.alert(`There was an problem with ADD, please check your check you internet conection, reaload this page or contact the developer.`
+        window.alert(
+          `There was an problem with ADD, please check your check you internet conection, reaload this page or contact the developer.`
         ),
     });
     this.listProjects();
@@ -60,7 +69,8 @@ export class ProjectListComponent {
     this.projectService.getProject(project.id).subscribe({
       next: (res) => (this.editFormModel = res),
       error: () =>
-        window.alert(`There was an problem with GET, please check your check you internet conection, reaload this page, reaload this page or contact the developer.`
+        window.alert(
+          `There was an problem with GET, please check your check you internet conection, reaload this page, reaload this page or contact the developer.`
         ),
     });
   }
@@ -72,36 +82,44 @@ export class ProjectListComponent {
       tech: editForm.value.tech,
       link: editForm.value.link,
     };
-    this.projectService
-      .editProject(pEdit.id, pEdit)
-      .subscribe({
-        error: () => window.alert(`There was an problem with EDIT, please check your conection or contact the developer`),
-        next: () => this.ngOnInit()
-      });
+    if (pEdit.id == 1 || pEdit.id == 2) {
+      window.alert('You are not allowed to edit this project. Try using other');
+    }
+
+    this.projectService.editProject(pEdit.id, pEdit).subscribe({
+      error: () =>
+        window.alert(
+          `There was an problem with EDIT, please check your conection or contact the developer`
+        ),
+      next: () => this.ngOnInit(),
+    });
   }
 
   deleteProject() {
     let deleteId: any = prompt('Input the project ID to delete:');
     deleteId = parseInt(deleteId);
 
-    if(deleteId == 1 || deleteId == 2 ){
-      return window.alert('You are not allowed to delete this project');
+    if (deleteId == 1 || deleteId == 2) {
+      return window.alert('You are not allowed to delete this project. Try using Other');
     }
 
     let failed: boolean = true;
 
     for (let gp of this.gatheredProjects) {
       if (deleteId == gp.id) {
-        if (confirm(`You are going to delete the project with ID «${deleteId}». This is permanent. Press OK to proceed.`)){
+        if (
+          confirm(
+            `You are going to delete the project with ID «${deleteId}». This is permanent. Press OK to proceed.`
+          )
+        ) {
           failed = false;
 
-          this.projectService
-            .deleteProject(deleteId)
-            .subscribe({
-              next:()=> window.alert('Deletion was submitted.'),
-              error: () => window.alert("There was an problem with DELETE, please check your conection or contact the developer."),
-              complete: () => this.listProjects()
-            });
+          this.projectService.deleteProject(deleteId).subscribe({
+            next: () => window.alert('Deletion was submitted.'),
+            error: () =>
+              window.alert('There was an problem with DELETE, please check your conection or contact the developer.'),
+            complete: () => this.listProjects()
+          });
         }
       }
     }
@@ -110,17 +128,9 @@ export class ProjectListComponent {
     }
   }
 
-  hideDangerMenu(){
-    let dm = document.getElementById('dangerMenu');
-
-    dm!.className = 'cover';
-  }
-
-  showDangerMenu(){
-    let dm = document.getElementById('dangerMenu');
-
-    dm!.className = '';
-  }
+  loginTracker(): void{
+    if(localStorage.getItem('user')){
+     this.LOGTRACK = JSON.parse(localStorage.getItem('user')|| '{}');
+    }
+   }
 }
-
-

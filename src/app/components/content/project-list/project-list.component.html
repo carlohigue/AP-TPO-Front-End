@@ -1,4 +1,15 @@
-<div class="card m-3 p-3">
+<div
+  class="card m-3 px-3 py-5 lead text-center"
+  [hidden]="LOGTRACK.role != ''"
+>
+  <span class="material-symbols-outlined key-icon">
+    key
+    </span>
+  In order to see the projects available please log in. <br>
+  To edit the projects available log as an administrator.
+</div>
+
+<div class="card m-3 p-3" [hidden]="LOGTRACK.role == ''">
   <!-- LOADING MESSAGE -->
   <div [hidden]="gatheredProjects != ''">
     <code> Retrieving the information from our Database... </code>
@@ -9,7 +20,8 @@
     <!-- Button trigger -ModalADD -->
 
 
-    <div class="row mt-3 my-4">
+    <div class="row mt-3 my-4"
+    [hidden]="LOGTRACK.role != 'admin'">
       <div class="col d-flex align-items-end flex-column">
         <button
           type="button"
@@ -142,6 +154,7 @@
     id="edit"
     #editForm="ngForm"
     (ngSubmit)="editProject(editForm)"
+    [hidden]="LOGTRACK.role != 'admin'"
     >
       <div
       [hidden]="editForm.value.id !== ''"
@@ -214,7 +227,7 @@
     </form>
     <!--EDITFORM-->
     <!--DELETE-->
-    <form id="dangerMenu">
+    <form id="dangerMenu" [hidden]="LOGTRACK.role != 'admin'">
       <div class="text-danger my-5">
         DANGER ZONE: Careful with the actions made in the following, they can't
         be undone.
