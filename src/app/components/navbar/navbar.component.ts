@@ -1,6 +1,7 @@
 import { Component} from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { LoginUser } from 'src/app/model/login-user';
+import { ProjectService } from 'src/app/service/service.service';
 
 @Component({
   selector: 'app-navbar',
@@ -12,7 +13,8 @@ export class NavbarComponent {
 
   loginForm;
 
-  constructor(private formBuilder: FormBuilder) {
+
+  constructor(private projectService: ProjectService, private formBuilder: FormBuilder) {
     this.loginForm = this.formBuilder.group({
       user: '',
       password: '',
@@ -24,45 +26,23 @@ export class NavbarComponent {
   }
 
   LOGTRACK = {
-    user: '',
+    userId: '',
     role: '',
   };
 
-  availableUsers: LoginUser[] = [
-    {
-      user: 'username',
-      password: 'userpass',
-      role: 'user',
-    },
-    {
-      user: 'theadmin',
-      password: 'admin*123',
-      role: 'admin',
-    },
-    {
-      user: 'thevisitor',
-      password: 'heretosee',
-      role: 'user',
-    },
-  ];
-
-  test() {
-    window.alert('Event works');
-  }
 
   attemptLogin(user: any) {
-    for (let a of this.availableUsers) {
-      if (user.user == a.user && user.password == a.password) {
-        window.alert('Login successful!');
-        const logUser = {
-          user: a.user,
-          role: a.role,
-        };
-        localStorage.setItem('user', JSON.stringify(logUser));
-        return location.reload();
-      }
+
+    let userSend = {
+      userId: user.user,
+      password: user.password
     }
-    return window.alert('Wrong credentials, check password or user.');
+
+    this.projectService.loginAuth(userSend).subscribe({
+      next: (res) =>  (localStorage.setItem('user', JSON.stringify(res))),
+      error: () => (window.alert('Wrong credentials, try again.')),
+      complete: () => (location.reload())
+    })
   }
 
   logout() {
@@ -72,7 +52,7 @@ export class NavbarComponent {
 
   loginTracker(): void{
     if(localStorage.getItem('user')){
-     this.LOGTRACK = JSON.parse(localStorage.getItem('user')|| '{}');
+     this.LOGTRACK = JSON.parse(localStorage.getItem('user')|| '');
     }
    }
 }

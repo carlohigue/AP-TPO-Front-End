@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Observable } from 'rxjs';
+import { LoginUser } from '../model/login-user';
 import { Project } from '../model/project';
 
 @Injectable({
@@ -10,6 +11,7 @@ import { Project } from '../model/project';
 export class ProjectService {
 
     url='https://api-myprojects-carlohigue.koyeb.app/api/project'
+    loginUrl='https://api-myprojects-carlohigue.koyeb.app/user/login'
 
   constructor(private http: HttpClient) { }
 
@@ -33,4 +35,7 @@ export class ProjectService {
     return this.http.delete(this.url+'/'+id)
   }
 
+  loginAuth(user: any){
+    return this.http.post(this.loginUrl, user)
+  }
 }

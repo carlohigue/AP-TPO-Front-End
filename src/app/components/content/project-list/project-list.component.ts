@@ -12,7 +12,7 @@ export class ProjectListComponent {
 
 
   LOGTRACK = {
-   user: '',
+   userId: '',
    role: ''
   };
 
@@ -49,7 +49,7 @@ export class ProjectListComponent {
       error: () =>
         window.alert(
           `There was an problem with LIST, please check your check you internet conection, reaload this page or contact the developer.`
-        ),
+        )
     });
   }
 
@@ -130,7 +130,7 @@ export class ProjectListComponent {
 
   loginTracker(): void{
     if(localStorage.getItem('user')){
-     this.LOGTRACK = JSON.parse(localStorage.getItem('user')|| '{}');
+     this.LOGTRACK = JSON.parse(localStorage.getItem('user')|| '');
     }
    }
 }
